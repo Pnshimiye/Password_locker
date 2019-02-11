@@ -32,11 +32,9 @@ class TestCredentials(unittest.TestCase):
             '''
             self.new_credential.save_credential() 
             self.assertEqual(len(Credential.credentils_list),1)
+   
 
-    def test_create_credential_password(self)
 
-             """
-             tes
 
     def tearDown(self):
             '''

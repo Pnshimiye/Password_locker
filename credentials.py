@@ -23,6 +23,13 @@ class Credential:
         '''
         Credential.credentials_list.append(self)
 
+    
+    def generate_password(size=6, char= string.ascii_lowercase+string.digits):
+        '''
+        Function to generate a 6 character password for a credential
+        '''
+        gen_pass=''.join(random.choice(char) for _ in range(size))
+        return gen_pass
 
     def delete_credential(self):
 
