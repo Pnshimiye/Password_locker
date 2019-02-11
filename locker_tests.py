@@ -1,6 +1,7 @@
 import unittest
 from users import User
- # Importing the users class
+from credentials import Credential
+  
 
 class TestUser(unittest.TestCase):
 
@@ -20,7 +21,7 @@ class TestUser(unittest.TestCase):
             test_init test case to test if the object is initialized properly
             '''
 
-            self.assertEqual(self.new_user.first_name,"James")
-            self.assertEqual(self.new_user.second_name,"Muriuki")
-            self.assertEqual(self.new_contact.phone_number,"0712345678")
+            self.assertEqual(self.new_user.first_name,"Pauline")
+            self.assertEqual(self.new_user.second_name,"Nshimiye")
+            self.assertEqual(self.new_user.password,"ouliouli")
           
