@@ -27,7 +27,16 @@ class Credential:
     def delete_credential(self):
 
         '''
-        delete_contact method deletes a saved credential from the credential_list
+        delete_credential method deletes a saved credential from the credential_list
         '''
 
-        Credential.credential_list.remove(self
+        Credential.credential_list.remove(self)
+
+    @classmethod
+	  def find_by_website_name(self, website_name):
+        '''
+        Method that takes in a website_name and returns a credential that matches that website_name.
+        '''
+        for credential in cls.credentials_list:
+          if credential.website_name == website_name:
+            return credential
