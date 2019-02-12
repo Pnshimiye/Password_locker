@@ -67,25 +67,22 @@ def generate_password():
               print('\n')
 
               while True:
-                      print("Use these short codes : nac - create a new contact, dc - display contacts, fc -find a contact, ex -exit the contact list ")
+                      print("Use these short codes : cuc - create a user account, lgn-log into the locker, ex -exit")
 
                       short_code = input().lower()
 
-                      if short_code == 'cc':
-                              print("New Contact")
+                      if short_code == 'cuc':
+                              print("New User")
                               print("-"*10)
 
                               print ("First name ....")
-                              f_name = input()
+                              first_name = input()
 
                               print("Last name ...")
-                              l_name = input()
+                              second_name = input()
 
-                              print("Phone number ...")
-                              p_number = input()
-
-                              print("Email address ...")
-                              e_address = input()
+                              print("create your password ...")
+                              password= input()                            
 
 
                               save_contacts(create_contact(f_name,l_name,p_number,e_address)) # create and save new contact.

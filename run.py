@@ -17,7 +17,7 @@ def save_users(user):
     '''
     Function to save users
     '''
-    user.save_users()
+    user.save_user()
   
   # def find_user(first_name,password):
   #     '''
@@ -61,37 +61,37 @@ def find_credential(website_name):
 
 def main():
 
-      print("Hello Welcome to your credential locker")
+      print("Hello!! Welcome to your credential locker")
+      print("Please would you Please tell us your name?")
+      
       user_name = input()
 
       print(f"Hello {user_name}. what would you like to do?")
       print('\n')
 
       while True:
-            print("Use these short codes : nac - create a new contact, dc - display contacts, fc -find a contact, ex -exit the contact list ")
+            print("Use these short codes : cuc - create a user account, lgn-log into the locker, ex -exit")
 
             short_code = input().lower()
 
-            if short_code == 'cc':
-                    print("New Contact")
+            if short_code == 'cuc':
+                    print("Welcome ,New User!!!")
+                    print("Proceed to creating your account ")
                     print("-"*10)
 
-                    print ("First name ....")
-                    f_name = input()
+                    print ("First name:..")
+                    first_name = input()
 
-                    print("Last name ...")
-                    l_name = input()
+                    print("Last name:..")
+                    second_name = input()
 
-                    print("Phone number ...")
-                    p_number = input()
-
-                    print("Email address ...")
-                    e_address = input()
+                    print("password:..")
+                    password = input()                 
 
 
-                    save_contacts(create_contact(f_name,l_name,p_number,e_address)) # create and save new contact.
+                    save_user(create_user(first_name, second_name, password)) # create and save new user
                     print ('\n')
-                    print(f"New Contact {f_name} {l_name} created")
+                    print(f"New user {first_name} {second_name} has been created")
                     print ('\n')
 
             elif short_code == 'dc':
