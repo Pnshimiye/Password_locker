@@ -1,7 +1,7 @@
 import unittest 
 from credentials import Credential
  
-class TestCredentials(unittest.TestCase):
+class TestCredential(unittest.TestCase):
 
     """
     Test class that defines test cases for the credential class behaviours.
@@ -10,10 +10,10 @@ class TestCredentials(unittest.TestCase):
         unittest.TestCase: TestCase class that helps in creating test cases
     """
     def setUp(self):
-            '''
-            Set up method to run before each test cases.
-            '''
-            self.new_credential = Credential("Carl", "Twitter","Carl","xyz")
+        '''
+        Set up method to run before each test cases.
+        '''
+        self.new_credential = Credential("Carl", "Twitter","Carl","xyz")
 
     def test_init(self):
             '''
@@ -29,7 +29,7 @@ class TestCredentials(unittest.TestCase):
             test_save_credential checks if the user instance is being saved to the user list
             '''
             self.new_credential.save_credential() 
-            self.assertEqual(len(Credential.credentils_list),1)
+            self.assertEqual(len(Credential.credentials_list),1)
 
     def tearDown(self):
             '''
@@ -37,7 +37,7 @@ class TestCredentials(unittest.TestCase):
             '''
             Credential.credentials_list = []
 
-    def test_save_multiple_users(self):
+    def test_save_multiple_credentials(self):
 
             '''
             test_save_multiple_credentials tests if we can save more than one users on our user list
@@ -47,7 +47,7 @@ class TestCredentials(unittest.TestCase):
             test_credential.save_credential()
             self.assertEqual(len(Credential.credentials_list),2)
 
-    @classmethod
+   
     def test_find_credential(self):
             '''
             test to check if we can find a credential by webisite name
@@ -88,5 +88,5 @@ class TestCredentials(unittest.TestCase):
             self.assertEqual(credential_exists,twitter)
 
  
-    if __name__ == '__main__':
-      unittest.main() 
+if __name__ == '__main__':
+  unittest.main() 
