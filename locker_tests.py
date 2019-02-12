@@ -50,19 +50,19 @@ class TestUser(unittest.TestCase):
             test_user.save_user()
             self.assertEqual(len(User.users_list),2)
 
-    # @classmethod
-    # def test_find_user(self):
-    #         '''
-    #         test to check if we can find a user by first name and password
-    #         '''
+    @classmethod
+    def test_find_user(self):
+            '''
+            test to check if we can find a user by first name and password
+            '''
 
-    #         self.new_user.save_user()
-    #         test_user: User("Carl","xyz")  
-    #         test_user.save_user()
+            self.new_user.save_user()
+            test_user: User("Carl","xyz")  
+            test_user.save_user()
 
-    #         current_user = User.find_user("Kami","xyz")
+            current_user = User.find_user("Kami","xyz")
 
-    #         self.assertEqual(current_user.first_name,test_user.first_name)
+            self.assertEqual(current_user.first_name,test_user.first_name)
 
     
 

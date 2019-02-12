@@ -47,11 +47,11 @@ def generate_password():
     return gen_pass
 
 
-def save_credentials(credential):
+def save_credentials(self):
     '''
     Function to save credentials
     '''
-    Credential.save_credential()
+    Credential.save_credential(self)
 
 def find_credential(website_name):
     '''
@@ -68,16 +68,17 @@ def main():
 
       print(f"Hello {user_name}. what would you like to do?")
       print('\n')
-
       while True:
-            print("Use these short codes : cuc - create a user account, lgn -log into the locker, ex -exit")
+        print("Use these short codes : cuc - create a user account, lgn -log into the locker,cc - create a new credential, dc - display credentials, ex -exit")
+      
+           
 
-            short_code = input().lower()
+        short_code = input().lower()
 
-            if short_code == 'ex':
+        if short_code == 'ex':
 		              	break
 
-            elif short_code == 'cuc':
+        elif short_code == 'cuc':
                     print("Welcome ,New User!!!")
                     print("Proceed to creating your account ")
                     print("-"*10)
@@ -97,34 +98,57 @@ def main():
                     print(f"New user {first_name} {second_name} has been created")
                     print ('\n')
 
-            elif short_code == 'lgn':
+                    
+                    print("Welcome again!! Time to start storing your credentials! shall we?")
 
-                    print("-"*60)
-                    print(' ')
-                    print('To login, enter your account details:')
-                    first_name = input('Enter your first name - ')       #.strip()
-                    password = str(input('Enter your password - '))
+        elif short_code == 'lgn':
 
-                    user_exists = check_existing_user(first_name,password)
+                    print("Please enter your first name and password to log into your credential list")
 
-                    if user_exists == first_name:
-                        print(" ")
-                        print(f'Welcome {first_name}. Please choose an option to continue.')
-                        print("")
-                        # print(' ')
-                        while True:
-                          print("-"*60)
+                    print("First name: ")
+                    first_name = input()
+                    print ("Password: ")
+                    password = input()
 
-            #         if display_contacts():
-            #                 print("Here is a list of all your contacts")
-            #                 print('\n')
+                    if  check_existing_user(first_name,password):
+                        search_user = find_user(first_name,password)
+                        print(f"{search_user.first_name} {search_user.password}")
+                        print('-' * 20)
 
-            #                 for contact in display_contacts():
-            #                         print(f"{contact.first_name} {contact.last_name} .....{contact.phone_number}")
+                        print("welcome {search_user.first_name} choose a suitable short code for you to continue   " )
+                        
+                    else:
+                        print("Sorry you do not seem to have an account here. to create this account choose the cuc optin in the short codes")
 
-            #                 print('\n')
-            #         else:
-            #                 print('\n')
+
+        elif short_code == 'cc':
+
+      
+                        print("New credential")
+                        print("-"*10)
+
+                        print ("First name ....")
+                        first_name = input()
+
+                        print("Website Name")
+                        website_name = input()
+
+                        print("login Name...")
+                        login_name = input()
+                        
+                        print("password...")
+                        password = input()
+
+                        save_credentials(create_credential(first_name,website_name,login_name,password)) # create and save new contact.
+                        print ('\n')
+                        print(f"New credential {login_name} {password} created")
+                        print ('\n')
+                        print("what would like to do next? chose the relecant short code")
+
+            
+
+                         
+                #                 print('\n')
             #                 print("You dont seem to have any contacts saved yet")
             #                 print('\n')
 
