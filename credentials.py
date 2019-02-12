@@ -9,15 +9,15 @@ class Credential:
     ''' 
     pass
 
-    Credentials_list = []
+    credentials_list = []
 
     
-    def __init__(self,website_name,login_name,password):
+    def __init__(self, first_name,website_name,login_name,password):
         '''
         Method to define the properties for each credential object will hold. 
         '''     
         
-      
+        self.first_name = first_name
         self.website_name = website_name       
         self.login_name = login_name
         self.password = password
@@ -42,14 +42,30 @@ class Credential:
         delete_credential method deletes a saved credential from the credential_list
         '''
 
-        Credential.credential_list.remove(self)
+        Credential.credentials_list.remove(self)
+
+
 
     @classmethod
       
-    def find_by_website_name(self, website_name):
+    def find_by_website_name(self,website_name):
         '''
-        Method that takes in a website_name and returns a credential that matches that website_name.
+        Method that takes in a website name  and returns a credential that matches that credential.
+
+        Args:
+            website name: website credential to search for
+        Returns :
+             Credentials for that website name
         '''
-        for credential in cls.credentials_list:
-          if credential.website_name == website_name:
-            return credential
+
+        for credential in self.credentials_list:
+            if credential.website_name == website_name:
+                return credential
+
+
+
+    def display_credentials(self):
+        '''
+        method that returns the credentials list
+        '''
+        return Credential.credentials_list

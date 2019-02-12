@@ -13,7 +13,7 @@ class TestCredential(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_credential = Credential("Carl", "Twitter","Carl","xyz")
+        self.new_credential = Credential("Carl","Twitter","carl","xyz")
 
     def test_init(self):
             '''
@@ -48,21 +48,25 @@ class TestCredential(unittest.TestCase):
             self.assertEqual(len(Credential.credentials_list),2)
 
    
-    def test_find_credential(self):
-            '''
-            test to check if we can find a credential by webisite name
-            '''
-            self.new_credential.save_credential()
-            test_credential = credential("Max","Facebook","max","abc")  
-            test_credential.save_credential()
+    # def test_find_credential(self):
+    #         '''
+    #         test to check if we can find a credential by webisite name
+    #         '''                    
+    #         for credential in self.credentials_list:
+    #           if credential.site_name == site_name:
+    #             return credential
 
-            found_credential = Credential.find_credential("Facebook")
+    #         # self.new_credential.save_credential()
+    #         # test_credential = Credential("Max","Facebook","max","abc")  
+    #         # test_credential.save_credential()
 
-            self.assertEqual(found_credental.website_name,test_credential.website_name)
+    #         # found_credential = Credential.find_credential("Facebook")
+
+    #         # self.assertEqual(found_credental.website_name,test_credential.website_name)
 
     def test_delete_credential(self):
             '''
-            To test if we can remove a credential from our credential list
+            To test if we can remove a credential from our credentials list
             '''
             self.new_credential.save_credential()
             test_credential = Credential("Carl","Twitter","carl","xyz")  
@@ -75,18 +79,20 @@ class TestCredential(unittest.TestCase):
             '''
             method that returns a list of all credentials  saved
             '''
-            self.assertEqual(Credential.display_credentials(),Credential.credentials_list)
+            self.assertEqual(Credential.display_credentials(self),Credential.credentials_list)
       
     def test_find_by_website_name(self):
             '''
-            Test to check if the find_by_website_name method returns the correct credential
+            test to check if we can find a  credential by using a website name
             '''
-            self.new_credential.save_credential()
-            twitter = Credential('Jane','Twitter','maryjoe','pswd100')
-            twitter.save_credentials()
-            credential_exists = Credential.find_by_site_name('Twitter')
-            self.assertEqual(credential_exists,twitter)
 
- 
+            self.new_credential.save_credential()
+            test_credential = Credential("Carl","Twitter","carl","xyz")
+            test_credential.save_credential()
+
+            found_credential = Credential.find_by_website_name("Twitter")
+
+            self.assertEqual(found_credential.website_name,test_credential.website_name)
+        
 if __name__ == '__main__':
   unittest.main() 

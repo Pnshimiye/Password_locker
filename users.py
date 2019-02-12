@@ -49,7 +49,23 @@ class User:
               if (user.first_name == first_name and user.password == password):
                 current_user = user.first_name
             return current_user
- 
+
+    @classmethod
+    def user_exists(self,first_name, password):
+        '''
+        Method that checks if a user exists from the user's list.
+        Args:
+            password:  password to search if it exists
+        Returns :
+            Boolean: True or false depending if the user exists
+        '''
+        for user in self.users_list:
+            if user.password == password and user.first_name == first_name:
+
+                return True
+
+        return False
+    
 
     
 		 # # user_credentials_list= [] 

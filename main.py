@@ -1,4 +1,54 @@
-def main():
+ #!/usr/bin/env/ python3.6
+ from users import User
+ from credentials import Credential
+
+  def create_user(first_name,second_name,password):
+      '''
+      Function to create a new user
+      '''
+      new_user = User(first_name,second_name,password)
+      return new_user
+
+  def save_users(user):
+      '''
+      Function to save users
+      '''
+      user.save_users()
+    
+  # def find_user(first_name,password):
+  #     '''
+  #     Function that finds a user by name and password and returns the user
+  #     '''
+  #     return User.check_user(cls,first_name,password)
+
+  def check_existing_user(first_name,password):
+      '''
+      Function that check if a user  exists with a first name  and password  and return a Boolean
+      '''
+      return User.user_exists( first_name,password)
+
+
+ def create_credential(first_name,website_name,login_name,password):
+      '''
+      Function to create a new credential
+      '''
+      new_credential = Credential(first_name,website_name,login_name,password)
+      return new_credential
+
+ def save_credentials(credential):
+      '''
+      Function to save credentials
+      '''
+      Credential.save_credential()
+
+ def find_credential(website_name):
+      '''
+      Function that finds a credential using a website name
+      '''
+      return Credential.find_by_website_name(website_name)
+
+
+
     print("Hello Welcome to your credential locker")
             user_name = input()
 
@@ -6,7 +56,7 @@ def main():
             print('\n')
 
             while True:
-                    print("Use these short codes : cc - create a new contact, dc - display contacts, fc -find a contact, ex -exit the contact list ")
+                    print("Use these short codes : nac - create a new contact, dc - display contacts, fc -find a contact, ex -exit the contact list ")
 
                     short_code = input().lower()
 
