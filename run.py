@@ -13,7 +13,7 @@ def create_user (first_name, second_name, password):
     new_user = User(first_name, second_name, password)
     return new_user
 
-def save_users(user):
+def save_user(user):
     '''
     Function to save users
     '''
@@ -29,7 +29,7 @@ def check_existing_user(first_name,password):
     '''
     Function that check if a user  exists with a first name  and password  and return a Boolean
     '''
-    return User.user_exists( first_name,password)
+    return User.user_exists(first_name,password)
 
 
 def create_credential(first_name,website_name,login_name,password):
@@ -70,11 +70,14 @@ def main():
       print('\n')
 
       while True:
-            print("Use these short codes : cuc - create a user account, lgn-log into the locker, ex -exit")
+            print("Use these short codes : cuc - create a user account, lgn -log into the locker, ex -exit")
 
             short_code = input().lower()
 
-            if short_code == 'cuc':
+            if short_code == 'ex':
+		              	break
+
+            elif short_code == 'cuc':
                     print("Welcome ,New User!!!")
                     print("Proceed to creating your account ")
                     print("-"*10)
@@ -94,41 +97,57 @@ def main():
                     print(f"New user {first_name} {second_name} has been created")
                     print ('\n')
 
-            elif short_code == 'dc':
+            elif short_code == 'lgn':
 
-                    if display_contacts():
-                            print("Here is a list of all your contacts")
-                            print('\n')
+                    print("-"*60)
+                    print(' ')
+                    print('To login, enter your account details:')
+                    first_name = input('Enter your first name - ')       #.strip()
+                    password = str(input('Enter your password - '))
 
-                            for contact in display_contacts():
-                                    print(f"{contact.first_name} {contact.last_name} .....{contact.phone_number}")
+                    user_exists = check_existing_user(first_name,password)
 
-                            print('\n')
-                    else:
-                            print('\n')
-                            print("You dont seem to have any contacts saved yet")
-                            print('\n')
+                    if user_exists == first_name:
+                        print(" ")
+                        print(f'Welcome {first_name}. Please choose an option to continue.')
+                        print("")
+                        # print(' ')
+                        while True:
+                          print("-"*60)
 
-            elif short_code == 'fc':
+            #         if display_contacts():
+            #                 print("Here is a list of all your contacts")
+            #                 print('\n')
 
-                    print("Enter the number you want to search for")
+            #                 for contact in display_contacts():
+            #                         print(f"{contact.first_name} {contact.last_name} .....{contact.phone_number}")
 
-                    search_number = input()
-                    if check_existing_contacts(search_number):
-                            search_contact = find_contact(search_number)
-                            print(f"{search_contact.first_name} {search_contact.last_name}")
-                            print('-' * 20)
+            #                 print('\n')
+            #         else:
+            #                 print('\n')
+            #                 print("You dont seem to have any contacts saved yet")
+            #                 print('\n')
 
-                            print(f"Phone number.......{search_contact.phone_number}")
-                            print(f"Email address.......{search_contact.email}")
-                    else:
-                            print("That contact does not exist")
+            # elif short_code == 'fc':
 
-            elif short_code == "ex":
-                    print("Bye .......")
-                    break
-            else:
-                    print("I really didn't get that. Please use the short codes")
+            #         print("Enter the number you want to search for")
+
+            #         search_number = input()
+            #         if check_existing_contacts(search_number):
+            #                 search_contact = find_contact(search_number)
+            #                 print(f"{search_contact.first_name} {search_contact.last_name}")
+            #                 print('-' * 20)
+
+            #                 print(f"Phone number.......{search_contact.phone_number}")
+            #                 print(f"Email address.......{search_contact.email}")
+            #         else:
+            #                 print("That contact does not exist")
+
+            # elif short_code == "ex":
+            #         print("Bye .......")
+            #         break
+            # else:
+            #         print("I really didn't get that. Please use the short codes")
 
 if __name__ == '__main__':
     main()
