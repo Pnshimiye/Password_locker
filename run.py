@@ -59,6 +59,12 @@ def find_credential(website_name):
     '''
     return Credential.find_by_website_name(website_name)
 
+def display_credentials(self):
+    '''
+    Function that returns all the saved credentials
+    '''
+    return Credential.display_credentials()
+
 def main():
 
       print("Hello!! Welcome to your credential locker")
@@ -69,7 +75,7 @@ def main():
       print(f"Hello {user_name}. what would you like to do?")
       print('\n')
       while True:
-        print("Use these short codes : cuc - create a user account, lgn -log into the locker,cc - create a new credential, dc - display credentials, ex -exit")
+        print("Use these short codes : cuc - create a user account, del- delete credential lgn -log into the locker,cc - create a new credential, dc - display credentials, ex -exit")
       
            
 
@@ -145,7 +151,31 @@ def main():
                         print ('\n')
                         print("what would like to do next? chose the relecant short code")
 
-            
+        elif short_code == 'dc':
+
+                        if display_credentials(self):
+                              print("Here is a list of all your credentials")
+                              print('\n')
+
+                              for credential in display_credentials(self):
+                                      print(f"{credential.first_name} {credential.website_name}{credential.login_name}...{credential.password}")
+
+                              print('\n')
+                        else:
+                              print('\n')
+                              print("You dont seem to have any credentials saved yet")
+                              print('\n')
+
+        elif short_code == 'del':
+
+
+                        delete_credentials(create_credential(first_name,website_name,login_name,password))
+
+
+
+                              
+
+              
 
                          
                 #                 print('\n')
