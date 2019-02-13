@@ -61,11 +61,11 @@ def find_credential(website_name):
     '''
     return Credential.find_by_website_name(website_name)
 
-def display_credentials(data):
+def display_credentials(first_name):
     '''
     Function that returns all the saved credentials
     '''
-    return Credential.display_credentials(data)
+    return Credential.display_credentials(first_name)
 
 def main():
 
@@ -77,7 +77,7 @@ def main():
       print(f"Hello {user_name}. what would you like to do?")
       print('\n')
       while True:
-        print("Use these short codes : cuc - create a user account, del- delete credential lgn -log into the locker,cc - create a new credential, dc - display credentials, ex -exit")
+        print("Use these short codes : cuc - create a user account, del- delete credential, lgn -log into the locker,cc - create a new credential, dc - display credentials, ex -exit")
         short_code = input().lower()
 
         if short_code == 'ex':
@@ -155,8 +155,12 @@ def main():
                           
                           print("password...")
                           password = input()
-                          new_credential= Credential(first_name,website_name,login_name,password)
-                          new_credential.save_credential() # create and save new contact.
+
+                          save_credential(create_credential(first_name,website_name,login_name,password)) 
+
+
+
+
                           print ('\n')
                           print(f"New credential {login_name} {password} created")
                           print ('\n')
@@ -164,18 +168,31 @@ def main():
 
         elif short_code == 'dc':
 
-                if (len(display_credentials())>0):
-                          print("Here is a list of all your credentials")
-                          print('\n')
+                          if display_credentials(user_name):
 
-                          for Credential in display_credentials(Credential.credential_list):
-                                  print(f"{credential.first_name} {credential.website_name}{credential.login_name}...{credential.password}")
+                                  print('Here is a list of all your credentials')
+                                  print(' ')
+                                  for credential in display_credentials(user_name):
+                                    print(f'Website Name: {credential.website_name} - Login Name: {credential.login_name} - Password: {credential.password}')
+                                  print(' ')	
+                                      
+                         
 
-                          print('\n')
-                else:
-                          print('\n')
-                          print("You dont seem to have any credentials saved yet")
-                          print('\n')
+                          else:
+                                  print('\n')
+                                  print("You dont seem to have any credentials saved yet")
+                                  print('\n')
+
+        elif short_code == 'del':
+
+                          print("Please specify which website credentials you want to delete")
+
+
+                          website_name = input()
+
+                          if check_existing_credential(website_name):
+                                  delete_credential = find_credential(website_name)
+
 
 
 if __name__ == '__main__':
