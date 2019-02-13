@@ -162,5 +162,21 @@ def main():
                           print ('\n')
                           print("what would like to do next? chose the relecant short code")
 
+        elif short_code == 'dc':
+
+                if (len(display_credentials())>0):
+                          print("Here is a list of all your credentials")
+                          print('\n')
+
+                          for Credential in display_credentials(Credential.credential_list):
+                                  print(f"{credential.first_name} {credential.website_name}{credential.login_name}...{credential.password}")
+
+                          print('\n')
+                else:
+                          print('\n')
+                          print("You dont seem to have any credentials saved yet")
+                          print('\n')
+
+
 if __name__ == '__main__':
         main()
