@@ -10,7 +10,7 @@ In case the user wishes to create new credentials, the application gives them an
 Author
 Done by Pauline Nshimiye a student at Moringa School
 
-##F unctionality
+## Functionality
 
 This application is run in the command line. 
 As the user opens it, it will prompt them to entering relevant data. 
