@@ -141,7 +141,7 @@ def main():
 
                     print("login Name...")
                     login_name = input()
-                #     while True
+              
                     
                     print("Please choose an option for entering a password: ep-enter existing password, gp-generate a password")
                     psw_choice = input("Enter an option:").lower().strip()
@@ -149,7 +149,7 @@ def main():
                     if psw_choice == 'ep':
                           print("")
                           password = input('Enter your password: ').strip() 
-                          # break
+                       
                     elif  psw_choice == 'gp':
                           password = generate_password()
                           

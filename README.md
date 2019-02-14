@@ -7,7 +7,7 @@ It then allows the user to store in their different account credentials, so that
 In case the user wishes to create new credentials, the application gives them an option of generating a password automatically, as sometimes we run out of ideas when it comes to creating a large number of passwords
 
 
-Author
+## Author
 Done by Pauline Nshimiye a student at Moringa School
 
 ## Functionality
